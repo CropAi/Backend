@@ -10,10 +10,17 @@
 
 
 ## Installing
+```
+s
+```
 
+## Features
 
 ## Authors
 
+## Contribute
+
+## Credits
 
 ## License
 
