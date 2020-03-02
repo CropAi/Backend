@@ -41,6 +41,10 @@ git clone https://github.com/Aju100/Backend.git
 cd Backend
 npm install
 ````
+- Run the server
+````node
+node server.js
+````
 
 ## Features
 Coming soon
