@@ -1,4 +1,4 @@
-# Backend of Crop Analyzer App
+# Backend of Crop Analyzer Application
 > Nodejs Backend Application
 
 ## Getting Started
