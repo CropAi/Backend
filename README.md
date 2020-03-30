@@ -33,7 +33,7 @@ choco install nodejs
 ## Development
 Fork the repo and clone the source locally:
 ````git
-git clone https://github.com/Aju100/Backend.git
+git clone https://github.com/CropAi/Backend.git
 ````
 
 - Install the project dependencies with npm
@@ -52,16 +52,3 @@ Coming soon
 ## Built with
 - [Nodejs](https://nodejs.org/en/)
 - [Express](https://expressjs.com/)
-
-
-## Authors
-Tanishq Saluja
-
-
-**Note for contributors:** If you want to make a pull request, please read CONTRIBUTING.md first.
-
-## License
- © [Tanishq Saluja
-](https://www.linkedin.com/in/tanishq-saluja-a4272815b/)
-
-### Acknowledgements
