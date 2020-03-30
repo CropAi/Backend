@@ -1,15 +1,13 @@
-# Backend of Crop Analyzer App
+# Backend of Crop Analyzer Application
 > Nodejs Backend Application
 
 ## Getting Started
-
 1. Install the project dependencies with npm install
 2. Start the server with node server.js
 
 ## Prerequisites
 - Nodejs
 - Browser
-
 
 ## Installation
 OS X:
@@ -45,6 +43,7 @@ npm install
 ````node
 node server.js
 ````
-## Built with
+
+## Built using
 - [Nodejs](https://nodejs.org/en/)
 - [Express](https://expressjs.com/)
