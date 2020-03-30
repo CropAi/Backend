@@ -102,7 +102,15 @@ input[type='file'] {
 }
 
 
-/* 1134 px */
+.filename{
+    text-align:center;
+    color:#fff;
+    font-size:2rem;
+    letter-spacing: 2px;
+    margin-left:4px;
+    
+    margin-top:1rem;
+}
 @media only screen and (max-width:1168px){  
 
     .form-content{

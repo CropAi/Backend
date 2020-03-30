@@ -17,12 +17,25 @@
 
             <div class="form-content">
                 <label for="file" class="label">Upload the file:</label>
+                
                 <div class="input-group">
-                    <input type="file" class="file-input" name="file" id="file">
+                    <input type="file" class="file-input" name="file" id="file"  onchange="showname()">
                 </div>
+
+                <p class="filename" id="filename"></p>
+                
             </div>
-            
         </form>
+    
     </div>
 </body>
+
+<script>
+    const showname = () => {
+        const filename=document.getElementById("filename")
+        const file = document.getElementById('file');
+        filename.innerText=file.files.item(0).name
+    };
+
+</script>
 </html> 
