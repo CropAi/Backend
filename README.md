@@ -44,6 +44,6 @@ npm install
 node server.js
 ````
 
-## Built with
+## Built using
 - [Nodejs](https://nodejs.org/en/)
 - [Express](https://expressjs.com/)
