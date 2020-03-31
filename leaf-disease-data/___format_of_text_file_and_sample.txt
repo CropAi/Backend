@@ -1,0 +1,25 @@
+**FORMAT OF TEXT FILE** 
+
+Symptoms : (Write atleast 3 points)
+----
+Treatment : (Write atleast 2/3 points)
+----
+Recommended Products : (Give 2 or 3 links)
+----
+
+**EXAMPLE TEXT FILE WITH CORRECT FORMAT** 
+
+Symptoms : 
+1 : The lesions are dark brown and appear leathery with faint, concentric rings giving a target-spot effect.
+2 : At first the spots are small (1 /8 inches in diameter) and oval or angular in shape, but later the spots can enlarge to about 1/2 inches.
+
+
+Treatment :
+1 : Plant only diseasefree, certified seed.
+2 : Follow a complete and regular foliar fungicide spray program.                
+3 : Allow tubers to mature before digging, dig when vines are dry, not wet, and avoid excessive wounding of potatoes during harvesting and handling.                         
+                      
+             
+Recommended products :
+1 : Harvest-Guard : https://www.planetnatural.com/product/floating-row-cover/
+2 : AllDown : https://www.planetnatural.com/product/vinegar-weed-killer/
