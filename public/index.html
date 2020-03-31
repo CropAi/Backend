@@ -13,7 +13,7 @@
 
     <div class="container">
 
-        <form action="#" method="POST" class="form">
+        <form action="/file_upload" method="POST" class="form">
 
             <div class="form-content">
                 <label for="file" class="label">Upload the file:</label>
@@ -22,7 +22,11 @@
                     <input type="file" class="file-input" name="file" id="file"  onchange="showname()">
                 </div>
 
-                <p class="filename" id="filename"></p>
+               <div class="btn-container">
+                   <input type="submit" value="Submit" class="btn">
+               </div>
+                
+               <p class="filename" id="filename"></p>
                 
             </div>
         </form>
