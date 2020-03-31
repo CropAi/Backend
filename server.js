@@ -12,8 +12,6 @@ app.get("/", (req, res) => {
 });
 
 
-
-
 app.get("/*", (req, res) => {
     res.send("404! Not found");
 });
@@ -38,11 +36,10 @@ app.post("/file_upload", (req, res) => {
         console.log(result.toString());
         res.send(result.toString());
     })
-        .catch(err => {
-            console.log("Error from swapn", err)
-        })
+    .catch(err => {
+        console.log("Error from spawn", err)
+    })
 });
-
 
 
 const PORT = process.env.PORT || 3000;
