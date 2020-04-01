@@ -21,7 +21,7 @@ body{
     background-repeat: no-repeat;
     background-size:cover;
     background-position:center;
-  
+
 }
 
 
@@ -37,7 +37,7 @@ body{
     background-repeat: no-repeat;
     background-size:cover;
     background-position:center;
-    
+
 }
 
 .form-content{
@@ -58,7 +58,7 @@ body{
 }
 
 .input-group{
-    
+
     width:30%;
     padding:1rem;
     margin:0 auto;
@@ -72,7 +72,7 @@ input[type='file'] {
 
 .file-input::-webkit-file-upload-button {
   visibility: hidden;
-  
+
 }
 
 .file-input::before {
@@ -108,7 +108,7 @@ input[type='file'] {
     font-size:2rem;
     letter-spacing: 2px;
     margin-left:4px;
-    
+
     margin-top:1rem;
 }
 
@@ -129,7 +129,7 @@ input[type='file'] {
 .btn:hover{
     background:rgba(6, 139, 192, 0.753);
 }
-@media only screen and (max-width:1168px){  
+@media only screen and (max-width:1168px){
 
     .form-content{
         padding:1rem;
@@ -146,7 +146,7 @@ input[type='file'] {
 
 
 @media only screen and (max-width:958px){
-    
+
     .form{
         padding:2rem;
         margin:4rem auto;
@@ -160,7 +160,7 @@ input[type='file'] {
 
 
 @media only screen and (max-width:640px){
-    
+
     .form{
         padding:2rem;
         margin:4rem auto;
@@ -177,7 +177,7 @@ input[type='file'] {
 
 
 @media only screen and (max-width:500px){
-    
+
     .form{
         padding:2rem;
         margin:4rem auto;
