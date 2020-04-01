@@ -1,4 +1,4 @@
-# Contributing Guidelines 👼🏽 👩🏽‍💻 👇🏽
+﻿# Contributing Guidelines 👼🏽 👩🏽‍💻 👇🏽
 
 We are extremely excited to have you onboard with our project. We hope to see some great contributions from your end and thank you all for making this project successful. 🤗
 
@@ -7,8 +7,18 @@ Before getting down to business, we believe to keep ourselves updated with the b
 - **[Git](https://git-scm.com/)** : is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 - **[Github Guides](https://guides.github.com)** : Learn all about Github Flow, Git Commits, Making Pull Request, Forking Projects and more.
 
+We love your input! We want to make contributing to this project as easy and transparent as possible, whether it's:
 
-We believe that contributing to Open-Source shouldn't be hard and so here are the steps you can follow to become the almighty Open-Source Expert.
+1. Reporting a bug
+2. Discussing the current state of the code
+3. Submitting a fix
+4. Proposing new features
+5. Becoming a maintainer
+
+## We Develop with Github
+
+  We use github to host code, to track issues and feature requests, as well as accept pull requests.
+
 
 ## Starting Steps to making history through your contributions
 
@@ -93,20 +103,42 @@ Finally hit create Pull Request Button.
 
 Sit back and relax while we verify your changes. You finally did it. Congratulations! 🙌 🤝
 
+Celebrate your success after your pull request is merged!
 
 
 ## Few other commands to help you: 🧠 🤘🏻
 
-1. If you want to move to a branch which you have already created before, then use:  
-   `git checkout <branch-name>`
+1. To move to a branch which you have already created before, then use:  
+     `git checkout <branch-name>`
 
     For example: `git checkout doc-fix`
 
-2. If you want to see the status of you branch, you can use:
-    ` git status`
+2. To see the status of you branch, you can use:
+     `git status`
 
-3. If you want to see the commit logs, you can use:
-   `git log`
+3. To see the commit logs, you can use:
+     `git log`
 
+4. To see the difference between a file on the current branch and potentially another branch.
+     `git diff`
 
+5. Add all files under directory <dir> to the project, including subdirectories.
+     `git add <dir>`
+
+6. Add all files under the current directory to the project
+    *WARNING*: including untracked files.
+     `git add .`
+
+7. Remove the specified files from the next commit.
+     `git reset HEAD <file1> <file2> ... `
+
+8. List all local branches.
+     `git branch`
+
+9. Merge branch <branch> into the current branch; this command is idempotent and can be run as many times as needed to keep the current branch up-to-date with changes in <branch>.
+     `git merge <branch>`
+
+10. Fetch changes from the server, and merge them into the current branch..
+     `git pull`
+  
 
