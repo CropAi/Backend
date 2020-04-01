@@ -1,15 +1,13 @@
-# Backend of Crop Analyzer App
+# Backend of Crop Analyzer Application
 > Nodejs Backend Application
 
 ## Getting Started
-
 1. Install the project dependencies with npm install
 2. Start the server with node server.js
 
 ## Prerequisites
 - Nodejs
 - Browser
-
 
 ## Installation
 OS X:
@@ -33,7 +31,7 @@ choco install nodejs
 ## Development
 Fork the repo and clone the source locally:
 ````git
-git clone https://github.com/Aju100/Backend.git
+git clone https://github.com/CropAi/Backend.git
 ````
 
 - Install the project dependencies with npm
@@ -46,22 +44,6 @@ npm install
 node server.js
 ````
 
-## Features
-Coming soon
-
-## Built with
+## Built using
 - [Nodejs](https://nodejs.org/en/)
 - [Express](https://expressjs.com/)
-
-
-## Authors
-Tanishq Saluja
-
-
-**Note for contributors:** If you want to make a pull request, please read CONTRIBUTING.md first.
-
-## License
- © [Tanishq Saluja
-](https://www.linkedin.com/in/tanishq-saluja-a4272815b/)
-
-### Acknowledgements
