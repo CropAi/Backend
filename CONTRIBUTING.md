@@ -80,7 +80,10 @@ For example if I was working on branch called `bug-fix-2` , the you can do the f
 ![Pull Request](./.github/images/Pull&#32;Request.png)
 
 
-9. Make sure you get the green check mark saying "Able to merge". Write a message if the chnages you made are very big to help us understand you changes better. 
+9. Make sure you get the green check mark saying "Able to merge". Write a message if the changes you made are very big to help us understand you changes better. 
+
+**Always mention your issue number on you message using expressions like `closes` or `fixes`:**
+> Example:  fixes #3
     
 ![Pull-Request-2](./.github/images/Pull-Request-2.png)
 
