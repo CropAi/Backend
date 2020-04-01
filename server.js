@@ -20,7 +20,7 @@ app.get("/*", (req, res) => {
 
 app.post("/file_upload", (req, res, next) => {
     
-    const form = formidable({ multiples: true, uploadDir: __dirname});
+    const form = formidable({ multiples: true, uploadDir: __dirname, keepExtensions:true});
     
     var fileName, fileType;
     
