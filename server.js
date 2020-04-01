@@ -1,5 +1,6 @@
 const express = require("express");
-const bodyParser=require("body-parser")
+const bodyParser=require("body-parser");
+const formidable = require("formidable");
 const app = express();
 
 app.use(express.static("public"));
@@ -17,28 +18,50 @@ app.get("/*", (req, res) => {
 });
 
 
-app.post("/file_upload", (req, res) => {
-    let runPy = new Promise(function (success, nosuccess) {
+app.post("/file_upload", (req, res, next) => {
+    
+    const form = formidable({ multiples: true, uploadDir: __dirname});
+    
+    var fileName, fileType;
+    
+    form.parse(req, (err, fields, files) => {
+        if (err) {
+            next(err);
+            return;
+        }
+         
+        fileName = files.file.name;
+        fileType = files.file.type;
+        
+        let runPy = new Promise(function (success, nosuccess) {
 
-        const { spawn } = require('child_process');
-        const pyprog = spawn('python', ['dummy.py']);
+            const { spawn } = require('child_process');
 
-        pyprog.stdout.on('data', function (data) {
-            success(data);
+            console.log(fileName);
+
+            const pyprog = spawn('python', ['dummy.py', fileName,fileType]);
+
+            pyprog.stdout.on('data', function (data) {
+                success(data);
+            });
+
+            pyprog.stderr.on('data', (data) => {
+                nosuccess(data);
+            });
         });
 
-        pyprog.stderr.on('data', (data) => {
-            nosuccess(data);
-        });
+        runPy.then(result => {
+            console.log(result.toString());
+            res.send(result.toString());
+        })
+            .catch(err => {
+                console.log("Error from spawn", err)
+            })
+       
     });
-
-    runPy.then(result => {
-        console.log(result.toString());
-        res.send(result.toString());
-    })
-    .catch(err => {
-        console.log("Error from spawn", err)
-    })
+    
+    
+    
 });
 
 
