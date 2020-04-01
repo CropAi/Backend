@@ -24,11 +24,13 @@ We love your input! We want to make contributing to this project as easy and tra
 
 1. Start by forking our repository. Click on the button on the top right corner. This will bring the project to your Github Workspace:
 
-![Fork the Project](./.github/images/Fork.png)
+![Fork](https://user-images.githubusercontent.com/49617450/78125788-261de600-742f-11ea-9d33-2eb965dc7661.png)
+
 
 2. You can now see the project on your own Github Account :
 
-![Github Account](./.github/images/Project&#32;Forked.png)
+![Project Forked](https://user-images.githubusercontent.com/49617450/78125901-4ea5e000-742f-11ea-8cbe-3a22cd213a64.png)
+
 
 3. Now let's bring the forked project to your local machine so, you can start making some changes to it. So do so you can click the clone button (on the top corner - green  in color) and copy the URL. Go to your favorite terminal and hit the following command:
    ```sh
@@ -63,9 +65,9 @@ It's that time when you need to create a new [remote](https://git-scm.com/book/e
 
 6. Always work by creating seperate feature branches, to do so you can run the following commands:
 ```sh
-    git checkout -b "<branch-name>"
+    git checkout -b <branch-name>
 ```
-For example: `git checkout -b "bug-fix-2"`
+For example: `git checkout -b bug-fix-2`
 
 The above command will make a new branch for you and move you to that branch.
 
@@ -87,7 +89,8 @@ For example if I was working on branch called `bug-fix-2` , the you can do the f
 
 8. Now you can go to you Github account and Open a Pull Request. To do so click on compare and hit Pull Request Button on the top-right corner which pops up.
 
-![Pull Request](./.github/images/Pull&#32;Request.png)
+![Pull Request](https://user-images.githubusercontent.com/49617450/78125935-5cf3fc00-742f-11ea-9927-887a38a916de.png)
+
 
 
 9. Make sure you get the green check mark saying "Able to merge". Write a message if the changes you made are very big to help us understand you changes better. 
@@ -95,7 +98,8 @@ For example if I was working on branch called `bug-fix-2` , the you can do the f
 **Always mention your issue number on you message using expressions like `closes` or `fixes`:**
 > Example:  fixes #3
     
-![Pull-Request-2](./.github/images/Pull-Request-2.png)
+![Pull-Request-2](https://user-images.githubusercontent.com/49617450/78125956-65e4cd80-742f-11ea-99f4-c9a4344a7cb6.png)
+
 
 
 
