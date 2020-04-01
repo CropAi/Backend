@@ -1,0 +1,190 @@
+# Contributing Guidelines 
+
+???? First off, thanks for taking the time to contribute! ????
+
+We love your input! We want to make contributing to this project as easy and transparent as possible, whether it's:
+
+1. Reporting a bug
+2. Discussing the current state of the code
+3. Submitting a fix
+4. Proposing new features
+5. Becoming a maintainer
+
+
+## We Develop with Github
+
+  We use github to host code, to track issues and feature requests, as well as accept pull requests.
+
+
+## How do I make a contribution?
+
+Never made an open source contribution before? Wondering how contributions work in the in our project? Here's a quick rundown!
+
+
+1. Find an issue that you are interested in addressing or a feature that you would like to add.
+
+2. Fork the repository associated with the issue to your local GitHub organization. This means that you will have a copy of the repository under your-GitHub-username/repository-name.
+
+3. Clone the repository to your local machine using 
+
+     git clone https://github.com/Your-github-username/repository-name.git
+
+4. Move into the repository folder to see all the files present. To do so you have to move into the directory by typing the following command:
+
+     cd Branch name
+
+5. Then we have to create a new [remote](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) (let's call it up) and link to the main repository so you can always keep your repository up-to-date
+
+    git remote add upstream https://github.com/github-username-of-the-project/repository-name.git
+
+4. Create a new branch for your fix (like in which branch you want to contribute) using the command
+
+     git checkout -b branch-name-here
+
+5. Make the appropriate changes for the issue you are trying to address or the feature that you want to add.
+
+6. Then to add the file contents of the changed files to the "snapshot" git uses to manage the state of the project, also known as the index.
+     
+     git add insert-paths-of-changed-files-here
+
+7. To store the contents of the index with a descriptive message. Use
+   
+     git commit -m "Insert a short message of the changes made here"
+ 
+8. Push the changes to the remote repository using 
+ 
+     git push origin branch-name-here
+
+9. Submit a pull request to the upstream repository.
+
+10. Title the pull request with a short description of the changes made and the issue or bug number associated with your change. 
+ 
+     For example, you can title an issue like so "Added more log outputting to resolve #4352".
+
+11. In the description of the pull request, explain the changes that you made, any issues you think exist with the pull request you made, and any questions you have for the maintainer. It's OK if your pull request is not perfect (no pull request is), the reviewer will be able to help you fix any problems and improve it!
+    Wait for the pull request to be reviewed by a maintainer.
+
+12. Make changes to the pull request if the reviewing maintainer recommends them.
+
+Celebrate your success after your pull request is merged!!
+
+
+
+
+
+## Some other Important Commands which will help you furthur!
+
+
+
+ " git reflog "
+
+Use this to recover from *major* mess ups! It's basically a log of the last few actions and you might have luck and find old commits that have been lost by doing a complex merge.
+
+
+ " git diff "
+  
+show a diff of the changes made since your last commit to diff one file: "git diff -- <filename>" to show a diff between staging area and HEAD: `git diff --cached`
+
+ 
+ " git status "
+  
+Show files added to the staging area, files with changes, and untracked files.
+
+
+ " git diff " 
+  
+Show the diff between a file on the current branch and potentially another branch.
+
+
+ " git ls -files "
+  
+List all files in the index and under version control.
+
+
+ " git add <dir> "
+  
+Add all files under directory <dir> to the project, including subdirectories.
+
+
+ " git add . "
+
+ Add all files under the current directory to the project
+  *WARNING*: including untracked files.
+
+
+ " git reset HEAD <file1> <file2> ... "
+  
+Remove the specified files from the next commi
+
+
+ " git commit <file1> <file2> ... [-m <msg>] "
+  
+Commit <file1>, <file2>, etc..., optionally using commit message <msg>, otherwise opening your editor to let you type a commit message
+
+
+ " git commit -a "
+  
+commit all files changed since your last commit (does not include new (untracked) files).
+
+
+ " git branch "
+  
+List all local branches.
+
+
+ " git branch -r "
+  
+List all remote branches.
+
+
+ " git checkout <branch> "
+  
+Make the current branch <branch>, updating the working directory to reflect
+the version referenced by <branch>
+
+ 
+ " git merge <branch> "
+  
+Merge branch <branch> into the current branch; this command is idempotent and can be run as many times as needed to keep the current branch up-to-date with changes in <branch>
+
+
+ " git rebase --interactive HEAD~10 "
+  
+(then change all but the first "pick" to "squash")
+ Squash the last 10 commits into one big commit.
+ WARNING: "git rebase" changes history.
+
+
+ " git fetch <remote> "
+ 
+ Update the remote-tracking branches for <remote> (defaults to "origin").
+  Does not initiate a merge into the current branch (see "git pull" below).
+
+ 
+ " git pull "
+  
+Fetch changes from the server, and merge them into the current branch..
+
+
+ " git push "
+  
+Update the server with your commits across all branches that are *COMMON*between your local copy and the server.  Local branches that were never pushed to the server in the first place are not shared.
+
+
+ " git reset --hard origin/master "
+  
+Undo your most recent *successful* merge *and* any changes that occurred after.  Useful for forgetting about the merge you just did.  If there are conflicts (the merge was not successful), use "git reset --hard" (above)
+instead.
+
+
+
+
+
+
+
+
+
+
+
+
+
