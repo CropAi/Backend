@@ -7,7 +7,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
+const resultInformation = require("./data");
 app.get("/", (req, res) => {
     res.send("Hello World!");
 });
@@ -52,11 +52,11 @@ app.post("/file_upload", (req, res, next) => {
 
         runPy.then(result => {
             console.log(result.toString());
-            res.send(result.toString());
+            res.send(resultInformation('Tomato Leaf Mold'));
         })
-            .catch(err => {
+        .catch(err => {
                 console.log("Error from spawn", err)
-            })
+        })
        
     });
     
