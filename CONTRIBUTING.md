@@ -75,7 +75,20 @@ For example if I was working on branch called `bug-fix-2` , the you can do the f
     git push origin bug-fix-2
 ```
 
-8. Now you can go to you Github account and Open a Pull Request. Sit back and relax while we verify your changes. You finally did it. Congratulations! 🙌 🤝
+8. Now you can go to you Github account and Open a Pull Request. To do so click on compare and hit Pull Request Button on the top-right corner which pops up.
+
+![Pull Request](./.github/images/Pull&#32;Request.png)
+
+
+9. Make sure you get the green check mark saying "Able to merge". Write a message if the chnages you made are very big to help us understand you changes better. 
+    
+![Pull-Request-2](./.github/images/Pull-Request-2.png)
+
+
+
+Finally hit create Pull Request Button.
+
+Sit back and relax while we verify your changes. You finally did it. Congratulations! 🙌 🤝
 
 
 
