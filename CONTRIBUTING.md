@@ -65,9 +65,9 @@ It's that time when you need to create a new [remote](https://git-scm.com/book/e
 
 6. Always work by creating seperate feature branches, to do so you can run the following commands:
 ```sh
-    git checkout -b "<branch-name>"
+    git checkout -b <branch-name>
 ```
-For example: `git checkout -b "bug-fix-2"`
+For example: `git checkout -b bug-fix-2`
 
 The above command will make a new branch for you and move you to that branch.
 
