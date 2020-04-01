@@ -1,4 +1,4 @@
-# Contributing Guidelines 👼🏽 👩🏽‍💻 👇🏽
+﻿# Contributing Guidelines 👼🏽 👩🏽‍💻 👇🏽
 
 We are extremely excited to have you onboard with our project. We hope to see some great contributions from your end and thank you all for making this project successful. 🤗
 
@@ -7,18 +7,30 @@ Before getting down to business, we believe to keep ourselves updated with the b
 - **[Git](https://git-scm.com/)** : is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 - **[Github Guides](https://guides.github.com)** : Learn all about Github Flow, Git Commits, Making Pull Request, Forking Projects and more.
 
+We love your input! We want to make contributing to this project as easy and transparent as possible, whether it's:
 
-We believe that contributing to Open-Source shouldn't be hard and so here are the steps you can follow to become the almighty Open-Source Expert.
+1. Reporting a bug
+2. Discussing the current state of the code
+3. Submitting a fix
+4. Proposing new features
+5. Becoming a maintainer
+
+## We Develop with Github
+
+  We use github to host code, to track issues and feature requests, as well as accept pull requests.
+
 
 ## Starting Steps to making history through your contributions
 
 1. Start by forking our repository. Click on the button on the top right corner. This will bring the project to your Github Workspace:
 
-![Fork the Project](./.github/images/Fork.png)
+![Fork](https://user-images.githubusercontent.com/49617450/78125788-261de600-742f-11ea-9d33-2eb965dc7661.png)
+
 
 2. You can now see the project on your own Github Account :
 
-![Github Account](./.github/images/Project&#32;Forked.png)
+![Project Forked](https://user-images.githubusercontent.com/49617450/78125901-4ea5e000-742f-11ea-8cbe-3a22cd213a64.png)
+
 
 3. Now let's bring the forked project to your local machine so, you can start making some changes to it. So do so you can click the clone button (on the top corner - green  in color) and copy the URL. Go to your favorite terminal and hit the following command:
    ```sh
@@ -53,9 +65,9 @@ It's that time when you need to create a new [remote](https://git-scm.com/book/e
 
 6. Always work by creating seperate feature branches, to do so you can run the following commands:
 ```sh
-    git checkout -b "<branch-name>"
+    git checkout -b <branch-name>
 ```
-For example: `git checkout -b "bug-fix-2"`
+For example: `git checkout -b bug-fix-2`
 
 The above command will make a new branch for you and move you to that branch.
 
@@ -77,7 +89,8 @@ For example if I was working on branch called `bug-fix-2` , the you can do the f
 
 8. Now you can go to you Github account and Open a Pull Request. To do so click on compare and hit Pull Request Button on the top-right corner which pops up.
 
-![Pull Request](./.github/images/Pull&#32;Request.png)
+![Pull Request](https://user-images.githubusercontent.com/49617450/78125935-5cf3fc00-742f-11ea-9927-887a38a916de.png)
+
 
 
 9. Make sure you get the green check mark saying "Able to merge". Write a message if the changes you made are very big to help us understand you changes better. 
@@ -85,7 +98,8 @@ For example if I was working on branch called `bug-fix-2` , the you can do the f
 **Always mention your issue number on you message using expressions like `closes` or `fixes`:**
 > Example:  fixes #3
     
-![Pull-Request-2](./.github/images/Pull-Request-2.png)
+![Pull-Request-2](https://user-images.githubusercontent.com/49617450/78125956-65e4cd80-742f-11ea-99f4-c9a4344a7cb6.png)
+
 
 
 
@@ -93,20 +107,42 @@ Finally hit create Pull Request Button.
 
 Sit back and relax while we verify your changes. You finally did it. Congratulations! 🙌 🤝
 
+Celebrate your success after your pull request is merged!
 
 
 ## Few other commands to help you: 🧠 🤘🏻
 
-1. If you want to move to a branch which you have already created before, then use:  
-   `git checkout <branch-name>`
+1. To move to a branch which you have already created before, then use:  
+     `git checkout <branch-name>`
 
     For example: `git checkout doc-fix`
 
-2. If you want to see the status of you branch, you can use:
-    ` git status`
+2. To see the status of you branch, you can use:
+     `git status`
 
-3. If you want to see the commit logs, you can use:
-   `git log`
+3. To see the commit logs, you can use:
+     `git log`
 
+4. To see the difference between a file on the current branch and potentially another branch.
+     `git diff`
 
+5. Add all files under directory <dir> to the project, including subdirectories.
+     `git add <dir>`
+
+6. Add all files under the current directory to the project
+    *WARNING*: including untracked files.
+     `git add .`
+
+7. Remove the specified files from the next commit.
+     `git reset HEAD <file1> <file2> ... `
+
+8. List all local branches.
+     `git branch`
+
+9. Merge branch <branch> into the current branch; this command is idempotent and can be run as many times as needed to keep the current branch up-to-date with changes in <branch>.
+     `git merge <branch>`
+
+10. Fetch changes from the server, and merge them into the current branch..
+     `git pull`
+  
 
