@@ -1,6 +1,8 @@
 # Backend of Crop Analyzer Application
 > Nodejs Backend Application
 
+
+[![GitHub issues](https://img.shields.io/github/issues/CropAi/Backend)](https://github.com/CropAi/Backend/issues)  [![GitHub forks](https://img.shields.io/github/forks/CropAi/Backend)](https://github.com/CropAi/Backend/network)  [![GitHub stars](https://img.shields.io/github/stars/CropAi/Backend)](https://github.com/CropAi/Backend/stargazers)  [![GitHub license](https://img.shields.io/github/license/CropAi/Backend)](https://github.com/CropAi/Backend)
 ## Getting Started
 1. Install the project dependencies with npm install
 2. Start the server with node server.js
