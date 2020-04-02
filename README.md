@@ -49,7 +49,3 @@ node server.js
 ## Built using
 - [Nodejs](https://nodejs.org/en/)
 - [Express](https://expressjs.com/)
-
-
-## Contribution Guidelines
-Check out our [Contribution Guidelines](CONTRIBUTING.md)
