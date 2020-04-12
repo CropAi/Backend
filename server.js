@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser=require("body-parser");
 const formidable = require("formidable");
+const { PythonShell } = require("python-shell");
 const app = express();
 
 app.use(express.static("public"));
@@ -22,7 +23,7 @@ app.post("/file_upload", (req, res, next) => {
     
     const form = formidable({ multiples: true, uploadDir: __dirname, keepExtensions:true});
     
-    var fileName, fileType;
+    var fileName, fileType, fileUploadPath;
     
     form.parse(req, (err, fields, files) => {
         if (err) {
@@ -32,35 +33,23 @@ app.post("/file_upload", (req, res, next) => {
          
         fileName = files.file.name;
         fileType = files.file.type;
-        
-        let runPy = new Promise(function (success, nosuccess) {
+        fileUploadPath = files.file.path;;
 
-            const { spawn } = require('child_process');
+        console.log(fileUploadPath);
 
-            console.log(fileName);
+        let options={
+            args : [fileUploadPath]
+        }
 
-            const pyprog = spawn('python', ['dummy.py', fileName,fileType]);
-
-            pyprog.stdout.on('data', function (data) {
-                success(data);
-            });
-
-            pyprog.stderr.on('data', (data) => {
-                nosuccess(data);
-            });
-        });
-
-        runPy.then(result => {
-            console.log(result.toString());
-            res.send(resultInformation('Tomato Leaf Mold'));
-        })
-        .catch(err => {
-                console.log("Error from spawn", err)
+        PythonShell.run("label_image.py", options,(err,result)=>{
+            if(err){
+                throw err;
+            }
+            console.log(result)
+            res.send(result)
         })
        
     });
-    
-    
     
 });
 
