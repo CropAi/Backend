@@ -11,8 +11,7 @@
 </head>
 <body>
 
-	<img src="/img/loader.gif" alt="loader" class="hide" id="loader">
-    <div class="container">
+	<div class="container">
 
         <form action="/file_upload" method="POST" class="form" enctype="multipart/form-data" > 
 
@@ -25,7 +24,8 @@
 
                
                 <div class="btn-container">
-                   <input type="submit" value="Submit" class="btn" id="btn" onclick="startLoader()">
+                   <input type="submit" value="Submit" class="btn" id="btn" onclick="hideButton()">
+                   <p id="hidingtext" class="hidingtext"></p>
                	</div>
                
 
@@ -51,9 +51,9 @@
 </script>
 
 <script >
-	const startLoader=()=>{
-		document.getElementById("loader").classList.remove("hide");
-		document.getElementById("loader").classList.add("loader");
+	const hideButton=()=>{
+		document.getElementById("btn").classList.add("hide");
+		document.getElementById("hidingtext").innerText="Analyzing...";
 	}
 </script>
 </html>
