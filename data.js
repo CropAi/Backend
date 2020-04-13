@@ -1,5 +1,6 @@
 const obj = {
   Pepper__bell___Bacterial_spot: {
+    name: "Pepper Bell Bacterial Spot",
     Symptoms: {
       "1":
         "Leaf spots that appear on the lower surface of older leaves as small, pimples and on the upper leaf surface as small water-soaked spots are a symptom of bacterial spot.",
@@ -24,6 +25,7 @@ const obj = {
     },
   },
   Pepper__bell___healthy: {
+    name:"Pepper Bell Healthy",
     Symptoms: {
       "1":
         "Initial symptoms of infection are the formation of small, circular, water-soaked spots on leaves, stems, petioles and/or peduncles",
@@ -58,6 +60,7 @@ const obj = {
     },
   },
   Potato___Early_blight: {
+    name:"Potato Early Blight",
     Symptoms: {
       "1":
         "The early blight is first observed on the plants as small, black lesions mostly on the older foliage.",
@@ -82,6 +85,7 @@ const obj = {
     },
   },
   Potato___Late_blight: {
+    name:"Potato Late Blight",
     Symptoms: {
       "1":
         "Affected stems begin to blacken from their tips, and eventually dry out.",
@@ -104,6 +108,7 @@ const obj = {
     },
   },
   Potato___healthy: {
+    name:"Potato Healthy",
     Symptoms: {
       "1":
         "Early blight usually affects potato foliage but tuber infections can also occur. Tuber lesions are dark, sunken, and circular often bordered by purple to gray raised tissue.",
@@ -139,6 +144,7 @@ const obj = {
     },
   },
   Tomato__Tomato_mosaic_virus: {
+    name:"Tomato Mosaic Virus",
     Symptoms: {
       "1":
         "Light and dark green mottled areas will appear on the leaves of tomato plants infected with this virus.",
@@ -161,6 +167,7 @@ const obj = {
     },
   },
   Tomato__Tomato_YellowLeaf__Curl_Virus: {
+    name:"Tomato YellowLeaf Curl Virus",
     Symptoms: {
       "1":
         "Leaves of infected plants are small and curl upward; and show strong crumpling and interveinal and marginal yellowing.",
@@ -182,6 +189,7 @@ const obj = {
     },
   },
   Tomato_Bacterial_spot: {
+    name:"Tomato Bacterial Spot",
     Symptoms: {
       "1":
         "On tomato, leaf lesions are initially circular and water-soaked and may be surrounded by a faint yellow halo. In general, spots are dark brown to black and circular on leaves and stems. Spots rarely develop to more than 3 mm in diameter.",
@@ -206,6 +214,7 @@ const obj = {
     },
   },
   Tomato_Early_blight: {
+    name:"Tomato Early Blight",
     Symptoms: {
       "1":
         "It cause damping-off, collar rot, stem cankers, leaf blight, and fruit rot.",
@@ -226,6 +235,7 @@ const obj = {
     },
   },
   Tomato_healthy: {
+    name:"Tomato Healthy",
     Symptoms: {
       "1":
         "Common tomato plant disease appears as bulls-eye-shaped brown spots on the lower leaves of a plant.",
@@ -261,6 +271,7 @@ const obj = {
     },
   },
   Tomato_Late_blight: {
+    name:"Tomato Late Blight",
     Symptoms: {
       "1":
         "Phytophthora infestans, the pathogen that causes tomato late blight and this organism needs tissue to survive.",
@@ -294,6 +305,7 @@ const obj = {
     },
   },
   Tomato_Leaf_Mold: {
+    name:"Tomato Leaf Mold",
     Symptoms: {
       "1":
         "Pale greenish-yellow spots, usually less than 1/4 inch, with no definite margins, form on upper sides of leaves.",
@@ -314,6 +326,7 @@ const obj = {
     },
   },
   Tomato_Septoria_leaf_spot: {
+    name:"Tomato Septoria Leaf Spot",
     Symptoms: {
       "1":
         "Septoria leaf spots start off somewhat circular and first appear on the undersides of older leaves, at the bottom of the plant.",
@@ -336,6 +349,7 @@ const obj = {
     },
   },
   Tomato_Spider_mites_Two_spotted_spider_mite: {
+    name:"Tomato Spider Mites",
     Symptoms: {
       "1":
         "Feeding injury often gives the top leaf surfaces a mottled or speckled, dull appearance",
@@ -360,6 +374,7 @@ const obj = {
     },
   },
   Tomato__Target_Spot: {
+    name:"Tomato Target Spot",
     Symptoms: {
       "1":
         "On leaves, the disease first appears as small, necrotic lesions with light-brown centers and dark margins.",
