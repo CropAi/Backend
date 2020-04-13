@@ -23,7 +23,7 @@
                 </div>
 
                <div class="btn-container">
-                   <input type="submit" value="Submit" class="btn">
+                   <input type="submit" value="Submit" class="btn" id="btn" onclick="disableButton()">
                </div>
 
                <p class="filename" id="filename"></p>
@@ -46,4 +46,13 @@
         //---------------------------------------------
     };
 </script>
+
+<script >
+	const disableButton=()=>{
+		setTimeout(()=>{
+			document.getElementById("btn").disabled=true;
+		},1000)
+	}
+</script>
+
 </html>
