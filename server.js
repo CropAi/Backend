@@ -35,24 +35,31 @@ app.post("/file_upload", (req, res, next) => {
          
         fileName = files.file.name;
         fileType = files.file.type;
-        fileUploadPath = files.file.path;;
+        fileUploadPath = files.file.path;
 
-        console.log(fileUploadPath);
+        const supportTypes = ["image/jpeg", "image/png", "image/jpg"];
 
         let options={
             args : [fileUploadPath]
         }
 
-        PythonShell.run("label_image.py", options,(err,result)=>{
-            if(err){
+        if (supportTypes.includes(fileType)) {
+
+            PythonShell.run("label_image.py", options, (err, result) => {
+              if (err) {
                 throw err;
-            }
-            console.log(result)
-            if (result.length !== 0)
-                res.send(resultInformation(result[0]));
-            else
-                res.json({ "Error": "No information found!" });
-        })
+              }
+              console.log(result);
+                if (result.length !== 0)
+                    res.send(resultInformation(result[2]));
+                else
+                    res.json({ Error: "No information found!" });
+            });
+        }
+        else {
+            res.json({ "Error": "File type not supported! Kindly upload an image!" });
+        }
+        
        
     });
     
