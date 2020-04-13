@@ -9,6 +9,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const resultInformation = require("./data");
+
+
 app.get("/", (req, res) => {
     res.send("Hello World!");
 });
@@ -46,7 +48,10 @@ app.post("/file_upload", (req, res, next) => {
                 throw err;
             }
             console.log(result)
-            res.send(result)
+            if (result.length !== 0)
+                res.send(resultInformation(result[0]));
+            else
+                res.json({ "Error": "No information found!" });
         })
        
     });
