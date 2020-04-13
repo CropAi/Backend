@@ -51,7 +51,7 @@ app.post("/file_upload", (req, res, next) => {
               }
               console.log(result);
                 if (result.length !== 0)
-                    res.send(resultInformation(result[2]));
+                    res.send(resultInformation(result[0]));
                 else
                     res.json({ Error: "No information found!" });
             });
