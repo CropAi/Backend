@@ -7,13 +7,14 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" href="./img/icon.png">
+
 </head>
 <body>
 
+	<img src="/img/loader.gif" alt="loader" class="hide" id="loader">
     <div class="container">
 
-        <form action="/file_upload" method="POST" class="form" enctype="multipart/form-data">
+        <form action="/file_upload" method="POST" class="form" enctype="multipart/form-data" > 
 
             <div class="form-content">
                 <label for="file" class="label">Upload the file:</label>
@@ -22,9 +23,11 @@
                     <input type="file" class="file-input" name="file" id="file"  onchange="showname(event)" accept="image/x-png,image/jpeg" required>
                 </div>
 
-               <div class="btn-container">
-                   <input type="submit" value="Submit" class="btn" id="btn" onclick="disableButton()">
-               </div>
+               
+                <div class="btn-container">
+                   <input type="submit" value="Submit" class="btn" id="btn" onclick="startLoader()">
+               	</div>
+               
 
                <p class="filename" id="filename"></p>
                <p class="filename" ><img id="showImage"/></p>
@@ -48,11 +51,9 @@
 </script>
 
 <script >
-	const disableButton=()=>{
-		setTimeout(()=>{
-			document.getElementById("btn").disabled=true;
-		},1000)
+	const startLoader=()=>{
+		document.getElementById("loader").classList.remove("hide");
+		document.getElementById("loader").classList.add("loader");
 	}
 </script>
-
 </html>
