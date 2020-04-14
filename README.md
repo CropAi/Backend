@@ -92,4 +92,4 @@ GirlScript Summer of Code 2019 witnessed overwhelming participation and 2020 edi
 Before contributing to this project do check [CONTRIBUTING.md](./CONTRIBUTING.md) where we have prepared a step by step guide to help you get started with our project.
 
 
-> We hope to see some great conteibutions from your end. You can always reach out to use for help and guidance. 👼🏼
+> We hope to see some great contributions from your end. You can always reach out to us for help and guidance. 👼🏼
