@@ -56,7 +56,7 @@ Using chocolate as package manager
 choco install nodejs
 ````
 
-💪🏼 For installtion for our python dependencies check out our [Data Modelling Repository](https://github.com/CropAi/Data-Modeling/) 
+💪🏼 For installation for our python dependencies check out our [Data Modelling Repository](https://github.com/CropAi/Data-Modeling/) 
 
 
 ## The application is built using the support of following dependencies 👌🏻: 

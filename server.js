@@ -19,7 +19,7 @@ const { PythonShell } = require("python-shell");
 // set up the app using express framework
 const app = express();
 
-// setup the global middlewares for the app for accessing satic folder 
+// setup the global middlewares for the app for accessing static folder 
 app.use(express.static("public"));
 
 // setup the global middleware for parsing JSON data
@@ -27,12 +27,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-// import/require the resultant data set infromation to send back to user
+// import/require the resultant data set information to send back to user
 const resultInformation = require("./data");
 
 /*  
 ---------------------------------
-    Routes' Setup for the server
+    Routes Setup for the server
 ---------------------------------
 */
 
@@ -48,7 +48,7 @@ app.get("/*", (req, res) => {
 });
 
 
-// Post Route: @POST method to get get back the result from result analsysis
+// Post Route: @POST method to get get back the result from result analysis
 
 /*
     @params:{Image} send from the client side
@@ -63,14 +63,14 @@ app.post("/file_upload", (req, res, next) => {
     
     var fileName, fileType, fileUploadPath;
     
-    // parse the imcoming request object with multiform type data
+    // parse the incoming request object with multiform type data
     form.parse(req, (err, fields, files) => {
         if (err) {
             next(err);
             return;
         }
          
-        // get access to required file details (name,path and type)
+        // get access to required file details (name, path and type)
         fileName = files.file.name;
         fileType = files.file.type;
         fileUploadPath = files.file.path;
