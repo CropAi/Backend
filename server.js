@@ -59,7 +59,11 @@ app.post("/file_upload", (req, res, next) => {
   
     // set up the formidable package to handle images from request parameter
     const form = formidable({ multiples: true, uploadDir: __dirname + "/test_images", keepExtensions:true});
-
+    
+    // bring in the execute function from child process to execute shell commands
+    const { exec } = require('child_process');
+    
+   
     
     var fileName, fileType, fileUploadPath;
     
@@ -91,7 +95,9 @@ app.post("/file_upload", (req, res, next) => {
               if (err) {
                 throw err;
               }
-                console.log(result);
+                
+                // run the shell script to delete files (image types)
+                const deleteScript = exec('sh deleteDir.sh');
                 
                 // send the analysed report from the python script
                 if (result.length !== 0)
@@ -104,6 +110,9 @@ app.post("/file_upload", (req, res, next) => {
         }
         // for not supported file types return back with appropriate message
         else {
+            
+            // delete non image file types
+            const deleteScript = exec('sh deleteDir.sh');
             res.json({ "Error": "File type not supported! Kindly upload an image!" });
         }
         
