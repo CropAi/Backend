@@ -36,6 +36,11 @@ const resultInformation = require("./data");
 ---------------------------------
 */
 
+// bring in the execute function from child process to execute shell commands
+const { exec } = require('child_process');
+
+// run the shell script to create folder test_images
+const createScript = exec('sh shell_scripts/setupDir.sh');
 
 // Index route : @GET method to access
 app.get("/", (req, res) => {
@@ -56,14 +61,10 @@ app.get("/*", (req, res) => {
 
 app.post("/file_upload", (req, res, next) => {
 
-  
+   
+
     // set up the formidable package to handle images from request parameter
     const form = formidable({ multiples: true, uploadDir: __dirname + "/test_images", keepExtensions:true});
-    
-    // bring in the execute function from child process to execute shell commands
-    const { exec } = require('child_process');
-    
-   
     
     var fileName, fileType, fileUploadPath;
     
@@ -98,7 +99,7 @@ app.post("/file_upload", (req, res, next) => {
                 
                 console.log(result)
                 // run the shell script to delete files (image types)
-                const deleteScript = exec('sh deleteDir.sh');
+                const deleteScript = exec('sh shell_scripts/deleteDir.sh');
                 
                 // send the analysed report from the python script
                 if (result.length !== 0)
@@ -113,7 +114,7 @@ app.post("/file_upload", (req, res, next) => {
         else {
             
             // delete non image file types
-            const deleteScript = exec('sh deleteDir.sh');
+            const deleteScript = exec('sh shell_scripts/deleteDir.sh');
             res.json({ "Error": "File type not supported! Kindly upload an image!" });
         }
         
