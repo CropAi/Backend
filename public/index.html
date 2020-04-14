@@ -56,12 +56,14 @@
     const showname = (event) => {
         const filename = document.getElementById("filename")
         const file = document.getElementById('file');
+        // update the filename on client
         filename.innerText = file.files.item(0).name
-        //---------------------------------------------
+        
+        // display the image on client
         const image = document.getElementById("showImage");
         image.src = URL.createObjectURL(event.target.files[0]);
         image.height = 200;
-        //---------------------------------------------
+        
     };
 </script>
 
