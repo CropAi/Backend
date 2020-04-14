@@ -4,35 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Crop AI</title>
 
+    <!-- Link to goole fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Link to custom stylesheet -->
     <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Addition of favicon on title bar -->
     <link rel="icon" href="./img/icon.png">
 
 </head>
 
 <body>
 
+    <!-- Single form page which accepts an image and send request to server -->
     <div class="container">
 
+        <!-- Form container which posts to server endpoint -->
         <form action="/file_upload" method="POST" class="form" enctype="multipart/form-data">
 
             <div class="form-content">
+                <!-- Label for the input file -->
                 <label for="file" class="label">Upload the file:</label>
 
+                <!-- Main input file type which limits the input to images -->
                 <div class="input-group">
                     <input type="file" class="file-input" name="file" id="file" onchange="showname(event)"
                         accept="image/x-png,image/jpeg" required>
                 </div>
 
-
+                <!-- Button to provide form submission  -->
                 <div class="btn-container">
                     <input type="submit" value="Submit" class="btn" id="btn" onclick="hideButton()">
                     <p id="hidingtext" class="hidingtext"></p>
                 </div>
 
-
+                <!-- Entities to display uploaded content description on client -->
                 <p class="filename" id="filename"></p>
                 <p class="filename"><img id="showImage" /></p>
             </div>
@@ -41,19 +51,23 @@
     </div>
 </body>
 
+<!-- script to display the name and image which is uploaded by the user -->
 <script>
     const showname = (event) => {
         const filename = document.getElementById("filename")
         const file = document.getElementById('file');
+        // update the filename on client
         filename.innerText = file.files.item(0).name
-        //---------------------------------------------
+        
+        // display the image on client
         const image = document.getElementById("showImage");
         image.src = URL.createObjectURL(event.target.files[0]);
         image.height = 200;
-        //---------------------------------------------
+        
     };
 </script>
 
+<!-- script to hide the button on form submit to avoid multuple submits -->
 <script>
     const hideButton = () => {
         document.getElementById("btn").classList.add("hide");
