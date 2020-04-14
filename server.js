@@ -96,6 +96,7 @@ app.post("/file_upload", (req, res, next) => {
                 throw err;
               }
                 
+                console.log(result)
                 // run the shell script to delete files (image types)
                 const deleteScript = exec('sh deleteDir.sh');
                 
