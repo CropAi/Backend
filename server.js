@@ -22,9 +22,11 @@ app.get("/*", (req, res) => {
 
 
 app.post("/file_upload", (req, res, next) => {
-    
+
     console.log("Request made from client side");
-    const form = formidable({ multiples: true, uploadDir: __dirname, keepExtensions:true});
+
+    const form = formidable({ multiples: true, uploadDir: __dirname + "/test_images", keepExtensions:true});
+
     
     var fileName, fileType, fileUploadPath;
     
