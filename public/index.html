@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" href="./img/icon.png">
+
 </head>
+
 <body>
 
     <div class="container">
@@ -19,15 +22,19 @@
                 <label for="file" class="label">Upload the file:</label>
 
                 <div class="input-group">
-                    <input type="file" class="file-input" name="file" id="file"  onchange="showname(event)" accept="image/x-png,image/jpeg" required>
+                    <input type="file" class="file-input" name="file" id="file" onchange="showname(event)"
+                        accept="image/x-png,image/jpeg" required>
                 </div>
 
-               <div class="btn-container">
-                   <input type="submit" value="Submit" class="btn">
-               </div>
 
-               <p class="filename" id="filename"></p>
-               <p class="filename" ><img id="showImage"/></p>
+                <div class="btn-container">
+                    <input type="submit" value="Submit" class="btn" id="btn" onclick="hideButton()">
+                    <p id="hidingtext" class="hidingtext"></p>
+                </div>
+
+
+                <p class="filename" id="filename"></p>
+                <p class="filename"><img id="showImage" /></p>
             </div>
         </form>
 
@@ -36,14 +43,22 @@
 
 <script>
     const showname = (event) => {
-        const filename=document.getElementById("filename")
+        const filename = document.getElementById("filename")
         const file = document.getElementById('file');
-        filename.innerText=file.files.item(0).name
+        filename.innerText = file.files.item(0).name
         //---------------------------------------------
-        const image = document.getElementById ("showImage");
-      	image.src = URL.createObjectURL(event.target.files[0]);
+        const image = document.getElementById("showImage");
+        image.src = URL.createObjectURL(event.target.files[0]);
         image.height = 200;
         //---------------------------------------------
     };
 </script>
+
+<script>
+    const hideButton = () => {
+        document.getElementById("btn").classList.add("hide");
+        document.getElementById("hidingtext").innerText = "Analyzing...";
+    }
+</script>
+
 </html>
