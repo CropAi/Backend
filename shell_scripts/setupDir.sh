@@ -1,1 +1,0 @@
-mkdir test_images
