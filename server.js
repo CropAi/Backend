@@ -40,18 +40,7 @@ const resultInformation = require("./data");
 const { exec } = require('child_process');
 
 // run the shell script to create folder test_images
-// const createScript = exec('sh shell_scripts/setupDir.sh');
-
-exec('mkdir test_images', (err, stdout, stderr) => {
-    if (err) {
-      //some err occurred
-      console.error(err)
-    } else {
-     // the *entire* stdout and stderr (buffered)
-     console.log(`stdout: ${stdout}`);
-     console.log(`stderr: ${stderr}`);
-    }
-});
+const createScript = exec('sh shell_scripts/setupDir.sh');
 
 // Index route : @GET method to access
 app.get("/", (req, res) => {
@@ -110,17 +99,7 @@ app.post("/file_upload", (req, res, next) => {
                 
                 console.log(result)
                 // run the shell script to delete files (image types)
-                // const deleteScript = exec('sh shell_scripts/deleteDir.sh');
-                exec('rm -f test_images/*.*', (err, stdout, stderr) => {
-                    if (err) {
-                      //some err occurred
-                      console.error(err)
-                    } else {
-                     // the *entire* stdout and stderr (buffered)
-                     console.log(`stdout: ${stdout}`);
-                     console.log(`stderr: ${stderr}`);
-                    }
-                });
+                const deleteScript = exec('sh shell_scripts/deleteDir.sh');
                 
                 // send the analysed report from the python script
                 if (result.length !== 0)
@@ -135,17 +114,7 @@ app.post("/file_upload", (req, res, next) => {
         else {
             
             // delete non image file types
-            // const deleteScript = exec('sh shell_scripts/deleteDir.sh');
-            exec('rm -f test_images/*.*', (err, stdout, stderr) => {
-                if (err) {
-                  //some err occurred
-                  console.error(err)
-                } else {
-                 // the *entire* stdout and stderr (buffered)
-                 console.log(`stdout: ${stdout}`);
-                 console.log(`stderr: ${stderr}`);
-                }
-            });
+            const deleteScript = exec('sh shell_scripts/deleteDir.sh');
             
             res.json({ "Error": "File type not supported! Kindly upload an image!" });
         }
