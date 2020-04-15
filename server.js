@@ -15,6 +15,8 @@ const express = require("express");
 const bodyParser=require("body-parser");
 const formidable = require("formidable");
 const { PythonShell } = require("python-shell");
+const fs = require("fs");
+const path=require("path")
 
 // set up the app using express framework
 const app = express();
@@ -36,11 +38,24 @@ const resultInformation = require("./data");
 ---------------------------------
 */
 
-// bring in the execute function from child process to execute shell commands
-const { exec } = require('child_process');
+// create a folder by name test_images to keep images
+const uploadDir = 'test_images';
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir);
+}
 
-// run the shell script to create folder test_images
-const createScript = exec('sh shell_scripts/setupDir.sh');
+// function to delete all files inside test images folder
+function deleteFiles() {
+    fs.readdir(uploadDir, (err, files) => {
+        if (err) throw err;
+
+        for (let file of files) {
+            fs.unlink(path.join(uploadDir, file), err => {
+                if (err) throw err;
+            });
+        }
+    });
+}
 
 // Index route : @GET method to access
 app.get("/", (req, res) => {
@@ -98,9 +113,10 @@ app.post("/file_upload", (req, res, next) => {
               }
                 
                 console.log(result)
-                // run the shell script to delete files (image types)
-                const deleteScript = exec('sh shell_scripts/deleteDir.sh');
                 
+                // call the delete method
+                deleteFiles();
+
                 // send the analysed report from the python script
                 if (result.length !== 0)
                     res.send(resultInformation(result[2]));
@@ -110,12 +126,12 @@ app.post("/file_upload", (req, res, next) => {
                     res.json({ Error: "No information found!" });
             });
         }
+        
         // for not supported file types return back with appropriate message
         else {
             
-            // delete non image file types
-            const deleteScript = exec('sh shell_scripts/deleteDir.sh');
-            
+            // call the delete method
+            deleteFiles();
             res.json({ "Error": "File type not supported! Kindly upload an image!" });
         }
         
@@ -123,7 +139,6 @@ app.post("/file_upload", (req, res, next) => {
     });
     
 });
-
 
 
 // listen the server at port:3000 
