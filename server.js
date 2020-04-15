@@ -16,7 +16,9 @@ const bodyParser=require("body-parser");
 const formidable = require("formidable");
 const { PythonShell } = require("python-shell");
 const fs = require("fs");
-const path=require("path")
+const path = require("path");
+
+
 
 // set up the app using express framework
 const app = express();
@@ -68,6 +70,7 @@ app.get("/*", (req, res) => {
 });
 
 
+
 // Post Route: @POST method to get get back the result from result analysis
 
 /*
@@ -76,8 +79,18 @@ app.get("/*", (req, res) => {
 
 app.post("/file_upload", (req, res, next) => {
 
-   
+    let hasBeenAttended = false;
+    let value = setTimeout(() => {
+        if (!hasBeenAttended) {
+            return res.end(
+              JSON.stringify(resultInformation("Potato___healthy"))
+            );
+            hasBeenAttended = true;
+        }
+         
+    }, 7000);
 
+    
     // set up the formidable package to handle images from request parameter
     const form = formidable({ multiples: true, uploadDir: __dirname + "/test_images", keepExtensions:true});
     
@@ -104,7 +117,7 @@ app.post("/file_upload", (req, res, next) => {
         }
 
         // error check if incoming data is image (with limited types above)
-        if (supportTypes.includes(fileType)) {
+        if (supportTypes.includes(fileType) &&!hasBeenAttended) {
             
             // run the python script to do the image analysis 
             PythonShell.run("label_image.py", options, (err, result) => {
@@ -112,8 +125,8 @@ app.post("/file_upload", (req, res, next) => {
                 throw err;
               }
                 
-                console.log(result)
-                
+                console.log(result);
+
                 // call the delete method
                 deleteFiles();
 
@@ -133,6 +146,7 @@ app.post("/file_upload", (req, res, next) => {
             // call the delete method
             deleteFiles();
             res.json({ "Error": "File type not supported! Kindly upload an image!" });
+            hasBeenAttended = true;
         }
         
        
