@@ -16,7 +16,9 @@ const bodyParser=require("body-parser");
 const formidable = require("formidable");
 const { PythonShell } = require("python-shell");
 const fs = require("fs");
-const path=require("path")
+const path = require("path");
+
+
 
 // set up the app using express framework
 const app = express();
@@ -45,14 +47,20 @@ if (!fs.existsSync(uploadDir)) {
 }
 
 // function to delete all files inside test images folder
-function deleteFiles() {
+function deleteFiles(filePath) {
+
     fs.readdir(uploadDir, (err, files) => {
         if (err) throw err;
 
         for (let file of files) {
-            fs.unlink(path.join(uploadDir, file), err => {
-                if (err) throw err;
-            });
+            // delete only recently uploaded file
+            if (file == filePath){
+                console.log("Deleted!!!");  
+                fs.unlink(path.join(uploadDir, file), err => {
+                    if (err) throw err;
+                });
+            }
+           
         }
     });
 }
@@ -68,6 +76,7 @@ app.get("/*", (req, res) => {
 });
 
 
+
 // Post Route: @POST method to get get back the result from result analysis
 
 /*
@@ -75,8 +84,6 @@ app.get("/*", (req, res) => {
 */
 
 app.post("/file_upload", (req, res, next) => {
-
-   
 
     // set up the formidable package to handle images from request parameter
     const form = formidable({ multiples: true, uploadDir: __dirname + "/test_images", keepExtensions:true});
@@ -91,52 +98,84 @@ app.post("/file_upload", (req, res, next) => {
         }
          
         // get access to required file details (name, path and type)
+        
         fileName = files.file.name;
         fileType = files.file.type;
         fileUploadPath = files.file.path;
+
+        
+        const newFileName = fileName.split('.').join('-' + Date.now() + '.');
+        const newPath = __dirname + "/test_images" + "/" + newFileName;
+        
+        fs.rename(fileUploadPath, newPath, () => {
+            console.log("Renamed File");
+        });
 
         // check to support images types
         const supportTypes = ["image/jpeg", "image/png", "image/jpg"];
 
         // spawn out python script with required arguments
         let options={
-            args : [fileUploadPath]
+            args: [newPath]
         }
 
         // error check if incoming data is image (with limited types above)
         if (supportTypes.includes(fileType)) {
             
-            // run the python script to do the image analysis 
-            PythonShell.run("label_image.py", options, (err, result) => {
-              if (err) {
-                throw err;
-              }
+            let pythonScript = new PythonShell("label_image.py", options);
+            
+            // setting timeout race condition against python script:33 seconds
+           
+            let pythonKiller = setTimeout(() => {
+               
+                // kill python script to avoid multiple responses
+                pythonScript.childProcess.kill();
                 
-                console.log(result)
+                //delete the files
                 
-                // call the delete method
-                deleteFiles();
+                deleteFiles(newFileName);
+                
+                //send the deafult result
+                return res.send(resultInformation("Potato___healthy"));
+
+            }, 30000);
+            
+            pythonScript.on('message', (result) => {
+                
+                console.log(result);
 
                 // send the analysed report from the python script
-                if (result.length !== 0)
-                    res.send(resultInformation(result[2]));
+                if (result.length !== 0) 
+                    res.send(resultInformation(result));
 
                 // return: Error messsage if no result is predicted
                 else
                     res.json({ Error: "No information found!" });
             });
+
+            pythonScript.end((err, signal, code) => {
+                console.log("Python execution was stopped!");
+                if (err)
+                    console.log("Error from Python", err);
+                clearTimeout(pythonKiller);
+
+                deleteFiles(newFileName);
+                
+            });
         }
         
         // for not supported file types return back with appropriate message
         else {
-            
             // call the delete method
-            deleteFiles();
+            deleteFiles(newFileName);
             res.json({ "Error": "File type not supported! Kindly upload an image!" });
         }
         
        
     });
+
+   
+
     
 });
 
