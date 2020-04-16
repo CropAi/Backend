@@ -79,18 +79,6 @@ app.get("/*", (req, res) => {
 
 app.post("/file_upload", (req, res, next) => {
 
-    let hasBeenAttended = false;
-    let value = setTimeout(() => {
-        if (!hasBeenAttended) {
-            return res.end(
-              JSON.stringify(resultInformation("Potato___healthy"))
-            );
-            hasBeenAttended = true;
-        }
-         
-    }, 7000);
-
-    
     // set up the formidable package to handle images from request parameter
     const form = formidable({ multiples: true, uploadDir: __dirname + "/test_images", keepExtensions:true});
     
@@ -104,6 +92,7 @@ app.post("/file_upload", (req, res, next) => {
         }
          
         // get access to required file details (name, path and type)
+        
         fileName = files.file.name;
         fileType = files.file.type;
         fileUploadPath = files.file.path;
@@ -117,40 +106,62 @@ app.post("/file_upload", (req, res, next) => {
         }
 
         // error check if incoming data is image (with limited types above)
-        if (supportTypes.includes(fileType) &&!hasBeenAttended) {
+        if (supportTypes.includes(fileType)) {
             
-            // run the python script to do the image analysis 
-            PythonShell.run("label_image.py", options, (err, result) => {
-              if (err) {
-                throw err;
-              }
+            let pythonScript = new PythonShell("label_image.py", options);
+            
+            // setting timeout race condition against python script:33 seconds
+           
+            let pythonKiller = setTimeout(() => {
+               
+                // kill python script to avoid multiple responses
+                pythonScript.childProcess.kill();
                 
+                //delete the files
+                
+                deleteFiles();
+                
+                //send the deafult result
+                return res.send(resultInformation("Potato___healthy"));
+
+            }, 30000);
+            
+            pythonScript.on('message', (result) => {
+                
+                console.log("Sending predicted result");
                 console.log(result);
 
-                // call the delete method
-                deleteFiles();
-
                 // send the analysed report from the python script
-                if (result.length !== 0)
-                    res.send(resultInformation(result[2]));
+                if (result.length !== 0) 
+                    res.send(resultInformation(result));
 
                 // return: Error messsage if no result is predicted
                 else
                     res.json({ Error: "No information found!" });
             });
+
+            pythonScript.end((err, signal, code) => {
+                console.log("Python execution was stopped!");
+                if (err)
+                    console.log("Error from Python", err);
+                clearTimeout(pythonKiller);
+                deleteFiles();
+                
+            });
         }
         
         // for not supported file types return back with appropriate message
         else {
-            
             // call the delete method
             deleteFiles();
             res.json({ "Error": "File type not supported! Kindly upload an image!" });
-            hasBeenAttended = true;
         }
         
        
     });
+
+   
+
     
 });
 

@@ -64,7 +64,7 @@ if __name__ == "__main__":
    img_file = sys.argv[1]
    md = Model()
    ##md.download_model()
-   print(md.getModel())
-   print(md)
+   ##print(md.getModel())
+   ##print(md)
    result = md.predict_image(img_file)
    print(result)
