@@ -70,8 +70,14 @@
 <!-- script to hide the button on form submit to avoid multuple submits -->
 <script>
     const hideButton = () => {
-        document.getElementById("btn").classList.add("hide");
-        document.getElementById("hidingtext").innerText = "Analyzing...";
+        const file = document.getElementById('file');
+
+        if(file.files.item(0)){
+            
+            document.getElementById("btn").classList.add("hide");
+            document.getElementById("hidingtext").innerText = "Analyzing...";
+        }
+        
     }
 </script>
 
