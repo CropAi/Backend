@@ -47,14 +47,20 @@ if (!fs.existsSync(uploadDir)) {
 }
 
 // function to delete all files inside test images folder
-function deleteFiles() {
+function deleteFiles(filePath) {
+
     fs.readdir(uploadDir, (err, files) => {
         if (err) throw err;
 
         for (let file of files) {
-            fs.unlink(path.join(uploadDir, file), err => {
-                if (err) throw err;
-            });
+            // delete only recently uploaded file
+            if (file == filePath){
+                console.log("Deleted!!!");  
+                fs.unlink(path.join(uploadDir, file), err => {
+                    if (err) throw err;
+                });
+            }
+           
         }
     });
 }
@@ -97,12 +103,20 @@ app.post("/file_upload", (req, res, next) => {
         fileType = files.file.type;
         fileUploadPath = files.file.path;
 
+        
+        const newFileName = fileName.split('.').join('-' + Date.now() + '.');
+        const newPath = __dirname + "/test_images" + "/" + newFileName;
+        
+        fs.rename(fileUploadPath, newPath, () => {
+            console.log("Renamed File");
+        });
+
         // check to support images types
         const supportTypes = ["image/jpeg", "image/png", "image/jpg"];
 
         // spawn out python script with required arguments
         let options={
-            args : [fileUploadPath]
+            args: [newPath]
         }
 
         // error check if incoming data is image (with limited types above)
@@ -119,7 +133,7 @@ app.post("/file_upload", (req, res, next) => {
                 
                 //delete the files
                 
-                deleteFiles();
+                deleteFiles(newFileName);
                 
                 //send the deafult result
                 return res.send(resultInformation("Potato___healthy"));
@@ -128,7 +142,6 @@ app.post("/file_upload", (req, res, next) => {
             
             pythonScript.on('message', (result) => {
                 
-                console.log("Sending predicted result");
                 console.log(result);
 
                 // send the analysed report from the python script
@@ -145,7 +158,8 @@ app.post("/file_upload", (req, res, next) => {
                 if (err)
                     console.log("Error from Python", err);
                 clearTimeout(pythonKiller);
-                deleteFiles();
+
+                deleteFiles(newFileName);
                 
             });
         }
@@ -153,7 +167,7 @@ app.post("/file_upload", (req, res, next) => {
         // for not supported file types return back with appropriate message
         else {
             // call the delete method
-            deleteFiles();
+            deleteFiles(newFileName);
             res.json({ "Error": "File type not supported! Kindly upload an image!" });
         }
         
