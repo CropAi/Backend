@@ -97,6 +97,11 @@ app.post("/file_upload", (req, res, next) => {
             return;
         }
          
+        if(files.file == undefined){
+            res.send("No Input File");
+            return;
+        }   
+        
         // get access to required file details (name, path and type)
         
         fileName = files.file.name;
