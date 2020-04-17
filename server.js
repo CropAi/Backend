@@ -5,6 +5,7 @@
     2. Body-Parser
     3. Formidable
     4. PythonShell
+    5. Cors
 ---------------------
 */
 
@@ -17,6 +18,7 @@ const formidable = require("formidable");
 const { PythonShell } = require("python-shell");
 const fs = require("fs");
 const path = require("path");
+const cors = require("cors");
 
 
 
@@ -30,6 +32,8 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// use cors as a global middleware
+app.use(cors());
 
 // import/require the resultant data set information to send back to user
 const resultInformation = require("./data");
