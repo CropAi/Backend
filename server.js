@@ -38,11 +38,6 @@ app.use(cors());
 // import/require the resultant data set information to send back to user
 const resultInformation = require("./data");
 
-/*  
----------------------------------
-    Routes Setup for the server
----------------------------------
-*/
 
 // create a folder by name test_images to keep images
 const uploadDir = 'test_images';
@@ -68,6 +63,33 @@ function deleteFiles(filePath) {
         }
     });
 }
+
+// Monkey-Patching Technique:
+
+app.use((req, res, next) => {
+    const render = res.render;
+    const send = res.send;
+    res.render = function renderWrapper(...args) {
+        Error.captureStackTrace(this);
+        return render.apply(this, args);
+    };
+    res.send = function sendWrapper(...args) {
+        try {
+            send.apply(this, args);
+        } catch (err) {
+            //console.error(`Error in res.send | ${err.code} | ${err.message} | ${res.stack}`);
+            console.log("Monkey Patching saved the crashing of server here!")
+        }
+    };
+    next();
+});
+
+
+/*
+---------------------------------
+    Routes Setup for the server
+---------------------------------
+*/
 
 // Index route : @GET method to access
 app.get("/", (req, res) => {
@@ -139,16 +161,13 @@ app.post("/file_upload", (req, res, next) => {
                
                 // kill python script to avoid multiple responses
                 pythonScript.childProcess.kill();
-                
-                //delete the files
-                
-                deleteFiles(newFileName);
-                
-                //send the deafult result
+ 
+                // send the default result
                 return res.send(resultInformation("Potato___healthy"));
 
-            }, 30000);
-            
+            }, 27500);
+
+            // wait for the python script to analyse the image
             pythonScript.on('message', (result) => {
                 
                 console.log(result);
@@ -166,8 +185,8 @@ app.post("/file_upload", (req, res, next) => {
                 console.log("Python execution was stopped!");
                 if (err)
                     console.log("Error from Python", err);
+                
                 clearTimeout(pythonKiller);
-
                 deleteFiles(newFileName);
                 
             });
@@ -177,7 +196,7 @@ app.post("/file_upload", (req, res, next) => {
         else {
             // call the delete method
             deleteFiles(newFileName);
-            res.json({ "Error": "File type not supported! Kindly upload an image!" });
+            res.send({ "Error": "File type not supported! Kindly upload an image!" });
         }
         
        
