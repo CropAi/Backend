@@ -38,7 +38,7 @@ For more detailed explanation make sure to check out our [Contributing Guideline
 
 ## INSTALLATIONS REQUIRED 👇🏼 :
 
-**OS X:**
+**Ubuntu/Debian:**
 ````sh
 sudo apt-get update
 sudo apt-get install nodejs 
